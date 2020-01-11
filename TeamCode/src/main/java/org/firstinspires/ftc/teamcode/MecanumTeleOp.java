@@ -163,6 +163,19 @@ public class MecanumTeleOp extends LinearOpMode {
                 robot.linearSlideBack.setPower(gamepad2.left_stick_y);
             }
 
+            if(gamepad2.a){
+                robot.pincherLeft.setPosition(1);
+                robot.pincherRight.setPosition(0);
+            }else if(gamepad2.b) {
+                robot.pincherLeft.setPosition(0);
+                robot.pincherRight.setPosition(1);
+            }else{
+                robot.pincherLeft.setPosition(0.5);
+                robot.pincherRight.setPosition(0.5);
+            }
+
+
+
 
            /*
             if (top is pushed and the user is going up) {

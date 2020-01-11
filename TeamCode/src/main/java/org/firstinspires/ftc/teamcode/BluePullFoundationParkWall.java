@@ -41,7 +41,7 @@ public class BluePullFoundationParkWall extends MecanumAutonomous {
         transformIntakeOut();
         sleep(1000);
         //Corrects orientation of foundation mover before lowering
-        ///turn(DRIVE_SPEED, 1.125, -1.125, 2 );
+        turn(DRIVE_SPEED, 1.125, -1.125, 2 );
         grabFoundation(0.0);
         sleep(2000);
         strafeRight(SLOW_DRIVE_SPEED, 46.52, 4.5);

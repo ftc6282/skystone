@@ -10,6 +10,8 @@ public class MecanumHardware {
     public DcMotor backRightDrive = null;
     public DcMotor backLeftDrive = null;
     public Servo foundationMover = null;
+    public Servo pincherLeft = null;
+    public Servo pincherRight = null;
     public DcMotor pincher = null;
     public DcMotor linearSlideFront = null;
     public DcMotor linearSlideBack = null;
@@ -30,7 +32,10 @@ public class MecanumHardware {
 
 
         foundationMover = hardwareMap.get(Servo.class, "foundationMover");
-        // servoTwo  = hardwareMap.get(Servo.class, "servoTwo");
+
+        pincherLeft = hardwareMap.get(Servo.class, "pincherLeft");
+        pincherRight = hardwareMap.get(Servo.class, "pincherRight");
+
 
         pincher = hardwareMap.get(DcMotor.class, "pincher");
         linearSlideFront = hardwareMap.get(DcMotor.class, "linearSlideFront");

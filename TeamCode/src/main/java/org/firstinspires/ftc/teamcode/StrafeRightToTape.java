@@ -46,7 +46,7 @@ public class StrafeRightToTape extends MecanumAutonomous {
         drive(DRIVE_SPEED, 12.0, 100);
 
         //Strafe to the right to be set in position
-        strafeRight(DRIVE_SPEED, 5.0, 100);
+        strafeRight(DRIVE_SPEED, 5.0, 100, false);
     }
 }
 

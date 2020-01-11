@@ -33,10 +33,10 @@ public class RedPullFoundationParkWall extends MecanumAutonomous {
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
 
-        strafeLeft(DRIVE_SPEED, 17.02, 3);
+        strafeLeft(DRIVE_SPEED, 16.5, 3);
         //TURN TO FOUNDATION ANGLE
-        drive(DRIVE_SPEED,4.5, 3.0);
-        strafeRight(DRIVE_SPEED, 1.0, 3);
+        drive(DRIVE_SPEED,4.0, 3.0);
+        strafeRight(DRIVE_SPEED, 1.0, 3, true);
         sleep(800);
         transformIntakeOut();
         sleep(500);
@@ -46,7 +46,7 @@ public class RedPullFoundationParkWall extends MecanumAutonomous {
         //turn(DRIVE_SPEED, 1.125, -1.125, 2 );
         grabFoundation(0.0);
         sleep(2000);
-        strafeRight(SLOW_DRIVE_SPEED, 48.0, 4.5);
+        strafeRight(SLOW_DRIVE_SPEED, 48.0, 4.5, true);
         turn(DRIVE_SPEED, -1.5, 1.5, 2);
         grabFoundation(.75);
         sleep(1000);
@@ -54,7 +54,7 @@ public class RedPullFoundationParkWall extends MecanumAutonomous {
         sleep(200);
         //Drives forward to park under bridge and  park touching wall
         drive(DRIVE_SPEED, -30.0, 3);
-        strafeRight(DRIVE_SPEED,3,3);
+        strafeRight(DRIVE_SPEED,3,3, true);
         turn(DRIVE_SPEED,-2, - 2, 3);
 
     }

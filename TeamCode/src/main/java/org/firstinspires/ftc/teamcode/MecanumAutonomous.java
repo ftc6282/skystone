@@ -162,7 +162,7 @@ public abstract class MecanumAutonomous extends LinearOpMode {
         }
     }
 
-    public void strafeRight(double speed, double inches, double timeoutS)
+    public void strafeRight(double speed, double inches, double timeoutS, boolean extraFrontRightPower)
     {
         int newFrontLeftTarget;
         int newBackLeftTarget;
@@ -192,7 +192,12 @@ public abstract class MecanumAutonomous extends LinearOpMode {
             runtime.reset();
             robot.frontLeftDrive.setPower(Math.abs(speed));
             robot.backLeftDrive.setPower(Math.abs(speed));
-            robot.frontRightDrive.setPower(Math.abs(speed));
+            if (extraFrontRightPower) {
+                robot.frontRightDrive.setPower(Math.abs(speed + .1));
+            } else {
+                robot.frontRightDrive.setPower(Math.abs(speed));
+            }
+
             robot.backRightDrive.setPower(Math.abs(speed));
 
             // keep looping while we are still active, and there is time left, and both motors are running.

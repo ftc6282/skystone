@@ -193,7 +193,7 @@ public abstract class MecanumAutonomous extends LinearOpMode {
             robot.frontLeftDrive.setPower(Math.abs(speed));
             robot.backLeftDrive.setPower(Math.abs(speed));
             if (extraFrontRightPower) {
-                robot.frontRightDrive.setPower(Math.abs(speed + .1));
+                robot.frontRightDrive.setPower(Math.abs(speed + 0.05));
             } else {
                 robot.frontRightDrive.setPower(Math.abs(speed));
             }

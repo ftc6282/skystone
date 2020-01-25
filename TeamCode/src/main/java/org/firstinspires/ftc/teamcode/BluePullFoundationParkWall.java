@@ -45,15 +45,14 @@ public class BluePullFoundationParkWall extends MecanumAutonomous {
         grabFoundation(0.0);
         sleep(2000);
         strafeRight(SLOW_DRIVE_SPEED, 46.52, 4.5, false);
-        turn(DRIVE_SPEED, -1.5, 1.5, 2);
+        turn(DRIVE_SPEED, -4, 1.5, 2);
         grabFoundation(.75);
         sleep(1000);
+        turn(DRIVE_SPEED, 2, -1.5, 2);
         //Drives forward to park under bridge and  park touching wall
-        drive(DRIVE_SPEED, 30.0, 3);
-        strafeRight(DRIVE_SPEED,3,3, false);
-        turn(DRIVE_SPEED,2, 2, 3);
+        drive(DRIVE_SPEED, 22.0, 3);
 
-        //FIVE  OUT  OF FIVE RUNS WITH CORRECT PLACEMENT
+
     }
 }
 

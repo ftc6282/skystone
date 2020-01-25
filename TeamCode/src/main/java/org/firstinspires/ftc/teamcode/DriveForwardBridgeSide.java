@@ -6,8 +6,8 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-@Autonomous(name="Pushbot: Auto Drive Forward, Strafe Right", group="Pushbot")
-public class StrafeRightToTape extends MecanumAutonomous {
+@Autonomous(name="DriveForwardBridgeSide", group="Pushbot")
+public class DriveForwardBridgeSide extends MecanumAutonomous {
 
     @Override
     public void runOpMode() {
@@ -43,10 +43,13 @@ public class StrafeRightToTape extends MecanumAutonomous {
         waitForStart();
 
         //Drive to prepare for strafe
-        drive(DRIVE_SPEED, 12.0, 100);
+        strafeLeft(DRIVE_SPEED,12,100);
+        sleep(300);
+        transformIntakeOut();
+        sleep(300);
+        drive(DRIVE_SPEED,17.0,100);
 
         //Strafe to the right to be set in position
-        strafeRight(DRIVE_SPEED, 5.0, 100, false);
     }
 }
 

@@ -2,8 +2,8 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
-@Autonomous(name="Pushbot: Auto Drive Forward, Strafe Left", group="Pushbot")
-public class StrafeLeftToTape extends MecanumAutonomous {
+@Autonomous(name="DriveForwardWallSide", group="Pushbot")
+public class DriveForwardWallSide extends MecanumAutonomous {
 
     @Override
     public void runOpMode() {
@@ -21,7 +21,6 @@ public class StrafeLeftToTape extends MecanumAutonomous {
         robot.frontRightDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         robot.backLeftDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         robot.backRightDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-
         robot.frontLeftDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         robot.frontRightDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         robot.backLeftDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -39,9 +38,16 @@ public class StrafeLeftToTape extends MecanumAutonomous {
         waitForStart();
 
         //Drive to prepare for strafe
-        drive(DRIVE_SPEED, 12.0, 100);
+        strafeLeft(DRIVE_SPEED,5,100);
+        sleep(300);
+        transformIntakeOut();
+        sleep(300);
+        strafeRight(DRIVE_SPEED,5,100,false);
+        //sleep(300);
+        drive(DRIVE_SPEED,17.0,100);
+        sleep(300);
 
         //Strafe to the right to be set in position
-        strafeLeft(DRIVE_SPEED, 5.0, 100);
+        //strafeLeft(DRIVE_SPEED, 5.0, 100);
     }
 }

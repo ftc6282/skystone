@@ -9,12 +9,12 @@ public class MecanumHardware {
     public DcMotor frontLeftDrive = null;
     public DcMotor backRightDrive = null;
     public DcMotor backLeftDrive = null;
-    public Servo foundationMover = null;
+    public FoundationMover foundationMover = null;
     public Servo pincherLeft = null;
     public Servo pincherRight = null;
     public DcMotor pincher = null;
-    public DcMotor linearSlideFront = null;
-    public DcMotor linearSlideBack = null;
+    public LinearSlide linearSlide = null;
+    public Servo skystoneGrabber = null;
     public DigitalChannel topSensor = null;
     public DigitalChannel bottomSensor = null;
 
@@ -31,23 +31,31 @@ public class MecanumHardware {
         backRightDrive.setDirection(DcMotor.Direction.REVERSE);
 
 
-        foundationMover = hardwareMap.get(Servo.class, "foundationMover");
+        foundationMover = new FoundationMover(hardwareMap.get(Servo.class, "foundationMover"));
+
 
         pincherLeft = hardwareMap.get(Servo.class, "pincherLeft");
         pincherRight = hardwareMap.get(Servo.class, "pincherRight");
 
 
         pincher = hardwareMap.get(DcMotor.class, "pincher");
-        linearSlideFront = hardwareMap.get(DcMotor.class, "linearSlideFront");
-        linearSlideBack = hardwareMap.get(DcMotor.class, "linearSlideBack");
 
-        foundationMover.setPosition(0.9);
+        linearSlide = new LinearSlide(
+                hardwareMap.get(DcMotor.class, "linearSlideFront"),
+                hardwareMap.get(DcMotor.class, "linearSlideBack")
+        );
+        //linearSlideFront = hardwareMap.get(DcMotor.class, "linearSlideFront");
+        //linearSlideBack = hardwareMap.get(DcMotor.class, "linearSlideBack");
+
+        foundationMover.releaseFoundation();
 
         topSensor = hardwareMap.get(DigitalChannel.class, "topSensor");
         topSensor.setMode(DigitalChannel.Mode.INPUT);
 
         bottomSensor = hardwareMap.get(DigitalChannel.class, "bottomSensor");
         bottomSensor.setMode(DigitalChannel.Mode.INPUT);
+
+        skystoneGrabber = hardwareMap.get(Servo.class, "skystoneGrabber");
 
     }
 

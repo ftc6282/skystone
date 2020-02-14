@@ -2,8 +2,8 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
-@Autonomous(name="Grab Blue Foundation and Park Near Wall", group="Pushbot")
-public class BluePullFoundationParkWall extends MecanumAutonomous {
+@Autonomous(name="BlueSkystoneParkWall", group="Pushbot")
+public class BlueSkystoneParkWall extends MecanumAutonomous {
 
     @Override
     public void runOpMode() {
@@ -30,29 +30,15 @@ public class BluePullFoundationParkWall extends MecanumAutonomous {
                 robot.backRightDrive.getCurrentPosition(),
                 telemetry.update());
 
-        // Wait for the game to start (driver presses PLAY)
+        //Wait for game to start (driver presses PLAY)
         waitForStart();
 
-        strafeLeft(DRIVE_SPEED, 17.02, 3);
-        //TURN TO FOUNDATION ANGLE
-        drive(DRIVE_SPEED,-5.5, 3);
-        strafeRight(DRIVE_SPEED, 1.0, 3, false);
-        sleep(1000);
-        transformIntakeOut();
-        sleep(1000);
-        //Corrects orientation of foundation mover before lowering
-        turn(DRIVE_SPEED, 1.125, -1.125, 2 );
-        robot.foundationMover.grabFoundation();
-        sleep(2000);
-        strafeRight(SLOW_DRIVE_SPEED, 46.52, 4.5, false);
-        turn(DRIVE_SPEED, -4, 1.5, 2);
-        robot.foundationMover.releaseFoundation();
-        sleep(1000);
-        turn(DRIVE_SPEED, 2, -1.5, 2);
-        //Drives forward to park under bridge and  park touching wall
-        drive(DRIVE_SPEED, 22.0, 3);
-
-
+//        strafeRight(DRIVE_SPEED, 5, 2,false);
+//        transformIntakeOut();
+//        strafeRight(DRIVE_SPEED, 7, 2, false);
+        grabStone(0.0);
+        sleep(3000);
+        grabStone(1.0);
+        sleep(3000);
     }
 }
-

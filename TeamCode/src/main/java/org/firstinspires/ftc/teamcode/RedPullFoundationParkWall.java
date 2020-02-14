@@ -44,11 +44,11 @@ public class RedPullFoundationParkWall extends MecanumAutonomous {
         sleep(800);
         //Corrects orientation of foundation mover before lowering
         //turn(DRIVE_SPEED, 1.125, -1.125, 2 );
-        grabFoundation(0.0);
+        robot.foundationMover.grabFoundation();
         sleep(2000);
         strafeRight(SLOW_DRIVE_SPEED, 48.0, 4.5, true);
         turn(DRIVE_SPEED, -1.5, 1.5, 2);
-        grabFoundation(.75);
+        robot.foundationMover.releaseFoundation();
         sleep(1000);
         turn(DRIVE_SPEED, 1.5, -1.5, 2);
         sleep(200);

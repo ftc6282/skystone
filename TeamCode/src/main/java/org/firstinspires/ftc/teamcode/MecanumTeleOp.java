@@ -82,8 +82,22 @@ public class MecanumTeleOp extends LinearOpMode {
             double leftPower;
             double rightPower;
 
-            double r = Math.hypot(-gamepad1.left_stick_x/.707, -gamepad1.left_stick_y/ .707);
-            double robotAngle = Math.atan2(-gamepad1.left_stick_y/ .707, -gamepad1.left_stick_x/ .707) - Math.PI / 4;
+            double left_stick_x = gamepad1.left_stick_x;
+            double left_stick_y = gamepad1.left_stick_y;
+//
+//            // Manipulate joystick values to make Samantha a better driver
+//            if(Math.abs(left_stick_x) < 0.1 && Math.abs(left_stick_y) > 0.1){
+//                left_stick_x = 0.0;
+//            }
+//
+//            if(Math.abs(left_stick_y) < 0.1 && Math.abs(left_stick_x) > 0.1){
+//                left_stick_y  = 0.0;
+//            }
+//
+//            telemetry.addData("dead zone", "%f %f %f %f", gamepad1.left_stick_x, gamepad1.left_stick_y, left_stick_x, left_stick_y);
+
+            double r = Math.hypot(-left_stick_x/.707, -left_stick_y/ .707);
+            double robotAngle = Math.atan2(-left_stick_y/ .707, -left_stick_x/ .707) - Math.PI / 4;
             double rightX = Math.pow(gamepad1.right_stick_x, 2);
             if(gamepad1.right_stick_x > 0){
                 rightX *= -1;
@@ -134,10 +148,10 @@ public class MecanumTeleOp extends LinearOpMode {
             }
 
             if (gamepad1.right_trigger >= 0.1){
-                robot.foundationMover.setPosition(0.0);
+                robot.foundationMover.grabFoundation();
             }
             if(gamepad1.left_trigger >= 0.1){
-                robot.foundationMover.setPosition(0.75);
+                robot.foundationMover.releaseFoundation();
             }
 
 
@@ -152,15 +166,12 @@ public class MecanumTeleOp extends LinearOpMode {
             // Don't allow the linear slide to go up if our button is pressed
             if (!robot.topSensor.getState() && gamepad2.left_stick_y < 0 && !gamepad2.a) {
                 // Don't let the operator move up as our button is pressed
-                robot.linearSlideFront.setPower(0);
-                robot.linearSlideBack.setPower(0);
+                robot.linearSlide.slideStop();
             } else if (!robot.bottomSensor.getState() && gamepad2.left_stick_y > 0 && !gamepad2.a) {
                 // Button is pressed
-                robot.linearSlideFront.setPower(0);
-                robot.linearSlideBack.setPower(0);
-            }else {
-                robot.linearSlideFront.setPower(gamepad2.left_stick_y);
-                robot.linearSlideBack.setPower(gamepad2.left_stick_y);
+                robot.linearSlide.slideStop();
+            } else {
+                robot.linearSlide.slideSpeed(gamepad2.left_stick_y);
             }
 
             if(gamepad2.a){
@@ -174,7 +185,13 @@ public class MecanumTeleOp extends LinearOpMode {
                 robot.pincherRight.setPosition(0.5);
             }
 
+            if(gamepad2.right_bumper){
+                robot.skystoneGrabber.setPosition(0.0);
+            }
 
+            if(gamepad2.left_bumper){
+                robot.skystoneGrabber.setPosition(1.0);
+            }
 
 
            /*

@@ -218,8 +218,8 @@ public abstract class MecanumAutonomous extends LinearOpMode {
         }
     }
 
-    public void grabFoundation (double grab) {
-        robot.foundationMover.setPosition(grab);
+    public void grabStone (double hook) {
+        robot.skystoneGrabber.setPosition(hook);
     }
 
     private void stopDriveMotors() {
@@ -252,21 +252,17 @@ public abstract class MecanumAutonomous extends LinearOpMode {
     public void transformIntakeOut(){
 
         //If you are facing the spool, make sure the string is on the left side going over the top of the axel
-        robot.linearSlideFront.setPower(-1);
-        robot.linearSlideBack.setPower(-1);
+        robot.linearSlide.slideUp();
         sleep(950);
-        robot.linearSlideFront.setPower(0);
-        robot.linearSlideBack.setPower(0);
+        robot.linearSlide.slideStop();
         sleep(100);
         robot.pincher.setPower(0.5);
         sleep(1000);
         robot.pincher.setPower(0);
         sleep(100);
-        robot.linearSlideFront.setPower(1);
-        robot.linearSlideBack.setPower(1);
+        robot.linearSlide.slideDown();
         sleep(1200);
-        robot.linearSlideFront.setPower(0);
-        robot.linearSlideBack.setPower(0);
+        robot.linearSlide.slideStop();
     }
 
     public void checkWheels(boolean forward, boolean backwards) {

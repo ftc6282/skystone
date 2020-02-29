@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DigitalChannel;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.NormalizedColorSensor;
 import com.qualcomm.robotcore.hardware.Servo;
 
 public class MecanumHardware {
@@ -17,6 +18,8 @@ public class MecanumHardware {
     public Servo skystoneGrabber = null;
     public DigitalChannel topSensor = null;
     public DigitalChannel bottomSensor = null;
+    public Servo capstoneDelivery = null;
+    public NormalizedColorSensor colorSensor;
 
     public void initialize(HardwareMap hardwareMap) {
         // initialize the hardware variables. Note that the strings used here as parameters
@@ -48,6 +51,8 @@ public class MecanumHardware {
         //linearSlideBack = hardwareMap.get(DcMotor.class, "linearSlideBack");
 
         foundationMover.releaseFoundation();
+        colorSensor = hardwareMap.get(NormalizedColorSensor.class, "sensor_color");
+
 
         topSensor = hardwareMap.get(DigitalChannel.class, "topSensor");
         topSensor.setMode(DigitalChannel.Mode.INPUT);
@@ -56,6 +61,8 @@ public class MecanumHardware {
         bottomSensor.setMode(DigitalChannel.Mode.INPUT);
 
         skystoneGrabber = hardwareMap.get(Servo.class, "skystoneGrabber");
+
+        capstoneDelivery = hardwareMap.get(Servo.class, "capstoneDelivery");
 
     }
 

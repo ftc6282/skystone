@@ -186,12 +186,19 @@ public class MecanumTeleOp extends LinearOpMode {
             }
 
             if(gamepad2.right_bumper){
-                robot.skystoneGrabber.setPosition(0.0);
+                robot.skystoneGrabber.setPosition(1.0);
             }
 
             if(gamepad2.left_bumper){
-                robot.skystoneGrabber.setPosition(1.0);
+                robot.skystoneGrabber.setPosition(0.0);
             }
+
+            if(gamepad1.a){
+                robot.capstoneDelivery.setPosition(1.0);
+            }else{
+                robot.capstoneDelivery.setPosition(0.0);
+            }
+
 
 
            /*

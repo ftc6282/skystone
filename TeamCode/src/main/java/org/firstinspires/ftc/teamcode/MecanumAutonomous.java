@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.NormalizedRGBA;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 public abstract class MecanumAutonomous extends LinearOpMode {
@@ -218,8 +219,12 @@ public abstract class MecanumAutonomous extends LinearOpMode {
         }
     }
 
-    public void grabStone (double hook) {
+    public void grabStone (double hook){
         robot.skystoneGrabber.setPosition(hook);
+    }
+
+    public void capstoneDelivery (double hook){
+        robot.capstoneDelivery.setPosition(hook);
     }
 
     private void stopDriveMotors() {
@@ -247,6 +252,68 @@ public abstract class MecanumAutonomous extends LinearOpMode {
         );
 
         telemetry.update();
+    }
+
+    public boolean isSkystone(){
+        NormalizedRGBA colors = robot.colorSensor.getNormalizedColors();
+
+        float max = Math.max(Math.max(Math.max(colors.red, colors.green), colors.blue), colors.alpha);
+        colors.red   /= max;
+        colors.green /= max;
+        colors.blue  /= max;
+        colors.alpha /= max;
+
+        if (colors.red > .5 && colors.blue < .3) {
+            telemetry.addLine("Stone");
+            return false;
+        }else{
+            telemetry.addLine("Skystone");
+            return true;
+
+        }
+    }
+
+    int counter = 0;
+    int distance = 80;
+
+    public void grabSkystoneBlue(){
+        while(counter <= 10){
+            if(isSkystone()){
+                drive(DRIVE_SPEED, 1,1);
+                robot.skystoneGrabber.setPosition(1.0);
+                sleep(800);
+                break;
+            }else{
+                drive(DRIVE_SPEED, 2, 1);
+                counter ++;
+                distance = distance - 5;
+            }
+        }
+    }
+
+    public void grabSkystoneRed(){
+        while(counter <= 10){
+            if(isSkystone()){
+                //drive(DRIVE_SPEED, 1, 1);
+                robot.skystoneGrabber.setPosition(1.0);
+                sleep(900);
+                break;
+            }else{
+                drive(DRIVE_SPEED, 2, 1);
+                counter++;
+            }
+        }
+    }
+
+    public void grabStoneBlue(){
+        //Since, atm, the auton times out x amount of seconds after grabbing first skystone
+        // and w the placement of the skystoneGrabber arm and pincher claws, it is going to
+        //be difficult to go for another skystone w the remaining time. I was thinking we should just go for
+        // another stone for an additional four points. Same goes for grabStoneRed.
+    }
+
+    public void grabStoneRed(){
+        //See grabSkystoneBlue above :)
     }
 
     public void transformIntakeOut(){

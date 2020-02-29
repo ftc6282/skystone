@@ -2,7 +2,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
-@Autonomous(name="Grab Red Foundation and Park Near Wall", group="Pushbot")
+@Autonomous(name="RedFoundationParkWall", group="Pushbot")
 public class RedPullFoundationParkWall extends MecanumAutonomous {
 
     @Override
@@ -45,11 +45,11 @@ public class RedPullFoundationParkWall extends MecanumAutonomous {
         //Corrects orientation of foundation mover before lowering
         //turn(DRIVE_SPEED, 1.125, -1.125, 2 );
         robot.foundationMover.grabFoundation();
-        sleep(2000);
+        sleep(800);
         strafeRight(SLOW_DRIVE_SPEED, 48.0, 4.5, true);
         turn(DRIVE_SPEED, -1.5, 1.5, 2);
         robot.foundationMover.releaseFoundation();
-        sleep(1000);
+        sleep(800);
         turn(DRIVE_SPEED, 1.5, -1.5, 2);
         sleep(200);
         //Drives forward to park under bridge and  park touching wall

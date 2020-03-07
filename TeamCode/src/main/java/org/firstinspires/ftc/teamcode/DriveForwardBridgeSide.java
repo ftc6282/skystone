@@ -43,13 +43,12 @@ public class DriveForwardBridgeSide extends MecanumAutonomous {
         waitForStart();
 
         //Drive to prepare for strafe
-        strafeLeft(DRIVE_SPEED,12,100);
+        strafeLeft(DRIVE_SPEED,12,2);
         sleep(300);
         transformIntakeOut();
         sleep(300);
-        drive(DRIVE_SPEED,17.0,100);
+        drive(DRIVE_SPEED,17.0,2);
 
-        //Strafe to the right to be set in position
     }
 }
 

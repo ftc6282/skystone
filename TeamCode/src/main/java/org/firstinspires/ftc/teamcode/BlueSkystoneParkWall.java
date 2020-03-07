@@ -1,5 +1,4 @@
 package org.firstinspires.ftc.teamcode;
-import android.database.sqlite.SQLiteCantOpenDatabaseException;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -44,32 +43,41 @@ public class BlueSkystoneParkWall extends MecanumAutonomous {
         //start going  for skystones
         drive(DRIVE_SPEED, -15, 2);
         sleep(300);
-        strafeRight(DRIVE_SPEED,13,2, true);
+        strafeRight(DRIVE_SPEED,13.25,2, true);
         sleep(300);
         drive(DRIVE_SPEED, -3, 1);
+        sleep(200);
+        drive(DRIVE_SPEED, 3.5, 2);
         sleep(300);
         isSkystone();
         sleep(200);
         grabSkystoneBlue();
         strafeLeft(DRIVE_SPEED, 10, 2);
-        drive(DRIVE_SPEED, distance, 2.5);
+        drive(DRIVE_SPEED, distanceBlue, 2.5);
         robot.skystoneGrabber.setPosition(0.0); //claw up
         sleep(300);
 
         //going for second stone
-        strafeLeft(DRIVE_SPEED, 18, 2);
-        drive(DRIVE_SPEED, -40, 3);
-        strafeRight(DRIVE_SPEED, 16, 2, true);
+        strafeLeft(DRIVE_SPEED, 12, 2);
+        drive(DRIVE_SPEED, -30, 2.75);
         sleep(500);
-        drive(DRIVE_SPEED, -3, 1);
+        strafeRight(DRIVE_SPEED, 18, 2.5, true);
+        sleep(500);
+        robot.skystoneGrabber.setPosition(1.0); //claw down
         sleep(300);
-        isSkystone();
-        sleep(200);
-        grabSkystoneBlue();
-        strafeLeft(DRIVE_SPEED, 14, 2);
-        drive(DRIVE_SPEED, 27 , 2);
-        robot.skystoneGrabber.setPosition(0.0); //claw up
+        strafeLeft(DRIVE_SPEED, 10, 2);
+        drive(DRIVE_SPEED, 15, 2);
+        robot.skystoneGrabber.setPosition(0.0);
         sleep(300);
+//        drive(DRIVE_SPEED, -3, 1);
+//        sleep(300);
+//        isSkystone();
+//        sleep(200);
+//        grabSkystoneBlue();
+//        strafeLeft(DRIVE_SPEED, 14, 2);
+//        drive(DRIVE_SPEED, 27 , 2);
+//        robot.skystoneGrabber.setPosition(0.0); //claw up
+//        sleep(300);
 
     }
 }

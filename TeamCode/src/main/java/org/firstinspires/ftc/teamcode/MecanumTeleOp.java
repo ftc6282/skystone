@@ -193,10 +193,12 @@ public class MecanumTeleOp extends LinearOpMode {
                 robot.skystoneGrabber.setPosition(0.0);
             }
 
-            if(gamepad1.a){
-                robot.capstoneDelivery.setPosition(1.0);
+            //values are backward, 0.0  is all the  way down here instead of up
+            if(gamepad2.y){
+                robot.capstoneDelivery.setPosition(0.0); //hold to go down
             }else{
-                robot.capstoneDelivery.setPosition(0.0);
+                //this  is start pos, im just too lazy to reprogram the servo
+                robot.capstoneDelivery.setPosition(0.75); //start pos
             }
 
 

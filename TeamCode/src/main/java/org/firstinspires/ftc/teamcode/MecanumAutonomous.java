@@ -274,19 +274,20 @@ public abstract class MecanumAutonomous extends LinearOpMode {
     }
 
     int counter = 0;
-    int distance = 80;
+    int distanceBlue = 45;
+    int distanceRed = 20;
 
     public void grabSkystoneBlue(){
-        while(counter <= 10){
+        while(counter <= 12){
             if(isSkystone()){
-                drive(DRIVE_SPEED, 1,1);
+                drive(DRIVE_SPEED, 0.5,1);
                 robot.skystoneGrabber.setPosition(1.0);
                 sleep(800);
                 break;
             }else{
-                drive(DRIVE_SPEED, 2, 1);
+                drive(DRIVE_SPEED, 2.5, 1);
                 counter ++;
-                distance = distance - 5;
+                distanceBlue = distanceBlue - 7;
             }
         }
     }
@@ -301,6 +302,7 @@ public abstract class MecanumAutonomous extends LinearOpMode {
             }else{
                 drive(DRIVE_SPEED, 2, 1);
                 counter++;
+                distanceRed = distanceRed - 4;
             }
         }
     }

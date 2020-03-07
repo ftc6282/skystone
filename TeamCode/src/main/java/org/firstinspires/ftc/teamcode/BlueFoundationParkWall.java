@@ -2,8 +2,8 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
-@Autonomous(name="RedFoundationParkWall", group="Pushbot")
-public class RedPullFoundationParkWall extends MecanumAutonomous {
+@Autonomous(name="BlueFoundationParkWall", group="Pushbot")
+public class BlueFoundationParkWall extends MecanumAutonomous {
 
     @Override
     public void runOpMode() {
@@ -14,7 +14,7 @@ public class RedPullFoundationParkWall extends MecanumAutonomous {
         robot.initialize(hardwareMap);
 
         // Send telemetry message to signify robot waiting;
-        telemetry.addData("Status", "Resetting Encoders");    //
+        telemetry.addData("Status", "Resetting Encoders");
         telemetry.update();
 
         robot.frontLeftDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -33,31 +33,25 @@ public class RedPullFoundationParkWall extends MecanumAutonomous {
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
 
-        strafeLeft(DRIVE_SPEED, 16.5, 3);
+        strafeLeft(DRIVE_SPEED, 17.02, 3);
         //TURN TO FOUNDATION ANGLE
-        drive(DRIVE_SPEED,4.0, 3.0);
-        strafeRight(DRIVE_SPEED, 1.0, 3, true);
+        drive(DRIVE_SPEED,-5.5, 3);
+        strafeRight(DRIVE_SPEED, 1.0, 3, false);
         sleep(800);
         transformIntakeOut();
-        sleep(500);
-        drive(DRIVE_SPEED, 0.5, 3);
         sleep(800);
         //Corrects orientation of foundation mover before lowering
-        //turn(DRIVE_SPEED, 1.125, -1.125, 2 );
+        turn(DRIVE_SPEED, 1.125, -1.125, 2 );
         robot.foundationMover.grabFoundation();
         sleep(800);
-        strafeRight(SLOW_DRIVE_SPEED, 48.0, 4.5, true);
-        turn(DRIVE_SPEED, -1.5, 1.5, 2);
+        strafeRight(SLOW_DRIVE_SPEED, 46.52, 4.5, false);
+        turn(DRIVE_SPEED, -4, 1.5, 2);
         robot.foundationMover.releaseFoundation();
         sleep(800);
-        turn(DRIVE_SPEED, 1.5, -1.5, 2);
-        sleep(200);
+        turn(DRIVE_SPEED, 2, -1.5, 2);
         //Drives forward to park under bridge and  park touching wall
-        drive(DRIVE_SPEED, -30.0, 3);
-        strafeRight(DRIVE_SPEED,3,3, true);
-        turn(DRIVE_SPEED,-2, - 2, 3);
+        drive(DRIVE_SPEED, 22.0, 3);
 
     }
 }
-
 
